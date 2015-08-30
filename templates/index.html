@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Flasky{% endblock %}
+{% block page_content %}
+{% if groups %}{% for group in groups %} {{ group }} {% endfor%} {% endif %}
+{% if png %}{% for pic in png %}
+<img src="{{ pic }}" width="165" height="60" />
+
+{% endfor %}
+{% endif %}
+{% endblock %}
