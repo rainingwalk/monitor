@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}{{ privatetitle }}{% endblock %}
+{% block thercss %}
+{% endblock %}
+{% block otherjs %}
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+    <div class="col-md-3">
+    {% for type in results %}
+        <button type="button" class="btn btn-primary active">
+            <span class="glyphicon glyphicon-tasks"></span>　{{ type}}　</button>
+        {% for region in results[type] %}
+        <div>
+        <a href="#{{ type}}{{ region }}" data-toggle="collapse"><i class="glyphicon glyphicon-hdd"></i>{{ region }}</a>
+        <ul id="{{ type}}{{ region }}" class="collapse">
+
+            {% for classname in results[type][region] %}
+            <div>
+            <a href="#{{ type}}{{ region }}{{ classname }}" data-toggle="collapse"><i class="glyphicon glyphicon-hdd"></i>{{ classname }}</a>
+            <ul id="{{ type}}{{ region }}{{ classname }}" class="collapse">
+
+                {% for host in results[type][region][classname] %}
+	    		<li><a target="draw" href="/draw?type={{type}}&region={{region}}&host={{host}}">{{host}}</a></li>
+                {% endfor %}
+
+            </ul>
+            </div>
+            {% endfor %}
+
+        </ul>
+        </div>
+        {% endfor %}
+    {% endfor %}
+<p></p> 
+    <div align="left">
+        <a href="/check?check=ecs" class="btn btn-info" role="button">新增ECS主机检测</a>
+        <p></p>
+        <a href="/check?check=rds" class="btn btn-info" role="button">新增RDS主机检测</a>
+    </div>
+    </div>
+<script type="text/javascript">
+    //iframe高度自适应
+    function autoHeight(){
+        var iframe = document.getElementById("draw");
+        if(iframe.Document){//ie自有属性
+            iframe.style.height = iframe.Document.documentElement.scrollHeight;
+        }else if(iframe.contentDocument){//ie,firefox,chrome,opera,safari
+            iframe.height = iframe.contentDocument.body.offsetHeight ;
+        }
+    }
+</script>
+    <div class="col-md-9">
+                <iframe name="draw" id="draw" frameborder="0" scrolling="no" style="width:99%;border:none" onload="autoHeight();"></iframe>
+    </div>
+    </div>
+</div>
+{% endblock %}

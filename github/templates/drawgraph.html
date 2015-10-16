@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}{{ privatetitle }}{% endblock %}
+{% block navbar %}
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">监控项展示（天)</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block content %}
+
+<div class="container">
+    <div class="col-md-9">
+        {{value}}
+    </div>
+    {% for png in pngs  %}
+    <p>
+    <a href="/draw/drawall/{{ png.drawal }}">
+        <img src="{{ png.pngpath }}" class="img-responsive" alt="Responsive image">
+    </a>
+    </p>
+    {% endfor %}
+    <p></p>
+</div>
+{% endblock %}

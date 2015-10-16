@@ -1,0 +1,12 @@
+MySQL_COMDML	5	
+MySQL_CpuUsage	5	
+MySQL_InnoDBBufferRatio	5	
+MySQL_InnoDBDataReadWriten	5
+MySQL_InnoDBLogWrites	5
+MySQL_IOPS	5
+MySQL_NetworkTraffic	5
+MySQL_QPSTPS	5
+MySQL_RowDML	5
+MySQL_Sessions	5
+MySQL_SpaceUsage	5
+MySQL_TempDiskTableCreates	5
